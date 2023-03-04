@@ -331,6 +331,7 @@ static MPP_RET test_mpp_run(MpiEncTestData *p, int fd, size_t size)
         mpp_frame_set_eos(frame, p->frm_eos);
 
         ret = mpi->encode_put_frame(ctx, frame);
+        mpp_frame_deinit(&frame);
         if (ret) {
             printf("mpp encode put frame failed\n");
             goto RET;
